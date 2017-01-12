@@ -103,7 +103,7 @@ export class EditarComponent {
 
     onValueChanged(data?: any) {
         var form = this.produtoGroup;
-        for (var field in this.formErrors) {    // field irá valer: nome, cpf, dataNasc e salario
+        for (var field in this.formErrors) {   
             this.formErrors[field] = '';
             var control = form.get(field);
             if (control && !control.valid) {
@@ -127,8 +127,6 @@ export class EditarComponent {
         } else {
             this.produtoGroup.value.promo = false;
         }
-
-        //this.produtoGroup.value.preco = this.produtoGroup.value.preco.replace(",",".");
 
         this.mp = {
             id: this.produtoGroup.value.id,
