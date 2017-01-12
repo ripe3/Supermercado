@@ -1,0 +1,65 @@
+<!--
+ * Copyright 2016 ripe3 - https://github.com/ripe3
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ -->
+
+<nav class="navbar navbar-findcond navbar-fixed-top">
+    <div class="container">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand text-center" routerLink="/"><b>Supermercado</b></a>
+		</div>
+		<div class="collapse navbar-collapse" id="navbar">
+			<ul class="nav navbar-nav">
+				<li class="dropdown">
+					<a routerLink="/produtos" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> Produtos </a>					
+				</li>
+				<li class="dropdown">
+					<a routerLink="/promocoes" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> Promoções </a>					
+				</li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="glyphicon glyphicon-cog"></i><span style="color: #fff">.</span></a>
+                    <ul class="dropdown-menu" role="menu">
+						<li><a routerLink="/produtos/add">Adicionar Produtos</a></li>
+						<li *ngIf="editable"><a routerLink="/produtos/edit/{{ id }}">Editar Produto</a></li>
+                    </ul>					
+				</li>
+			</ul>
+			<form class="navbar-form navbar-right search-form" role="search">				
+				<li class="dropdown" style="color:white">
+					<input type="text" #sbox (keyup)="search(sbox.value)" data-toggle="dropdown" role="searchbox" class="form-control dropdown-toggle"  aria-expanded="false" placeholder="Pesquisar..." />                    
+                    <ul class="dropdown-menu" role="menu">
+						<li *ngFor="let r of results | async"><a routerLink="/produtos/{{r.id}}">{{r.nome.substring(0,20) + (r.nome.substring(20, 21) == '' ? '' : '...' ) }}</a></li>
+                    </ul>					
+				</li>
+			</form>
+			
+		</div>
+	</div>
+</nav>
+
+<div class="container">
+   <router-outlet></router-outlet>
+</div>
+
+<div class="footer text-center">
+</div>
+

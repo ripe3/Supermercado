@@ -1,0 +1,156 @@
+<!--
+ * Copyright 2016 ripe3 - https://github.com/ripe3
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ -->
+
+<br><br><br>
+<div class="container" style="background-color: white">
+    <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+
+        
+        
+        <form [formGroup]="produtoGroup"
+                  role="form"
+                  class="form-horizontal"
+                  (ngSubmit)="onSubmit(produtoGroup.valid)"
+                  novalidate>  <!--  #f="ngForm" => removido -->
+
+                <!-------------->
+                <div class="form-group">
+                    <div class="col-md-4"></div>
+                    <div class="col-md-4">
+                        <img style="height: 200px" src="{{ img.value }}" onError="this.src='http://www.thebakerymadewithlove.com/wp-content/uploads/2014/08/placeholder.png';">
+                    </div>
+                    <div class="col-md-4"></div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-sm-2">ID:</label>
+                    <div class="col-sm-7">
+                        <input type="text"
+                               id="id"
+                               name="id"
+                               placeholder="Informe o código de barras"
+                               formControlName="id"
+                               maxlength="13"
+                               [ngClass]="{'form-control': true, 'input-sm': true, 'submitted': submitted}">
+                               <div *ngIf="formErrors.id && submitted" class="alert alert-danger text-center">
+                            {{ formErrors.id }}
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="control-label col-sm-2">Nome:</label>
+                    <div class="col-sm-7">
+                        <input type="text"
+                               id="nome"
+                               name="nome"
+                               placeholder="Informe o nome do produto"
+                               formControlName="nome"
+                               [ngClass]="{'form-control': true, 'input-sm': true, 'submitted': submitted}"/>
+                               <div *ngIf="formErrors.nome && submitted" class="alert alert-danger text-center">
+                            {{ formErrors.nome }}
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="control-label col-sm-2">Imagem:</label>
+                    <div class="col-sm-7">
+                        <input type="text"
+                               id="imagem"
+                               name="imagem"
+                               placeholder="Informe o endereço da imagem"
+                               formControlName="imagem"
+                               [ngClass]="{'form-control': true, 'input-sm': true, 'submitted': submitted}"
+                               #img>
+                               <div *ngIf="formErrors.imagem && submitted" class="alert alert-danger text-center">
+                            {{ formErrors.imagem }}
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="control-label col-sm-2">Preço:</label>
+                    <div class="col-sm-7">
+                        <input type="text"
+                               id="preco"
+                               name="preco"
+                               placeholder="Informe o preço"
+                               formControlName="preco"
+                               [ngClass]="{'form-control': true, 'input-sm': true, 'submitted': submitted}"
+                               onkeyup="formatDinDin(this)">
+                               <div *ngIf="formErrors.preco && submitted" class="alert alert-danger text-center">
+                            {{ formErrors.preco }}
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="form-group">
+                    <label class="control-label col-sm-2">Desconto:</label>
+                    <div class="col-sm-7">
+                        <input type="text"
+                               id="desconto"
+                               name="desconto"
+                               placeholder="Informe o desconto"
+                               formControlName="desconto"
+                               [ngClass]="{'form-control': true, 'input-sm': true, 'submitted': submitted}">
+                               <div *ngIf="formErrors.desconto && submitted" class="alert alert-danger text-center">
+                            {{ formErrors.desconto }}
+                        </div>
+                    </div>
+                </div>
+
+                <!-------------->
+
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-default">
+                            <span class="glyphicon glyphicon-ok"></span> Cadastrar
+                        </button>
+                    </div>
+                </div>
+
+            </form>
+
+
+
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+</div>
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Ops!</h4>
+        </div>
+        <div class="modal-body">
+          <p>{{erro}}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+        </div>
+      </div>
+    </div>
+  </div>
