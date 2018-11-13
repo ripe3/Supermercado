@@ -5,7 +5,7 @@ Pequeno supermercado feito em `Angular 2` utilizando `InMemoryDataService`. Incl
 
 ## Screenshots
 
-![Image 1](screenshots/1i.png)
+![Image 1](screenshots/1ii.png)
 
 ![Image 2](screenshots/2i.png)
 
@@ -34,7 +34,7 @@ Small supermarket made with `Angular 2` and `InMemoryDataService`. Include creat
 
 ## Screenshots
 
-![Image 1](screenshots/1i.png)
+![Image 1](screenshots/1ii.png)
 
 ![Image 2](screenshots/2i.png)
 
